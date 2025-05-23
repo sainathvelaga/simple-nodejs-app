@@ -1,6 +1,6 @@
 {
   "name": "simple-nodejs-app",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Research about a person",
   "main": "index.js",
   "scripts": {
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rat9615/simple-nodejs-app.git"
+    "url": "git+https://github.com/sainathvelaga/simple-nodejs-app.git"
   },
-  "author": "Rohan R",
+  "author": "Sainath",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rat9615/simple-nodejs-app/issues"
+    "url": "https://github.com/sainathvelaga/simple-nodejs-app.git/issues"
   },
-  "homepage": "https://github.com/rat9615/simple-nodejs-app#readme",
+  "homepage": "https://github.com/sainathvelaga/simple-nodejs-app#readme",
   "dependencies": {
     "ejs": "^3.1.10",
     "express": "^4.17.3",
