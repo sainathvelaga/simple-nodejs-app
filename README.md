@@ -5,13 +5,9 @@ Simple-nodejs-app is a simple web application created using [Node.js](https://gi
 ## Download and Installation
 
 - Clone the repo ```https://github.com/sainathvelaga/simple-nodejs-app.git```
-- [Fork, Clone or Download on Github](https://github.com/rat9615/simple-nodejs-app)
+- [Fork, Clone or Download on Github](https://github.com/sainathvelaga/simple-nodejs-app)
 
 ## Usage
 
 - After installation, run ```npm install``` to download and install all the required dependencies.
 - Run ```npm start``` to run the web application.
-
-## Live Preview
-
-To view a live preview of this application, click [here](https://desolate-coast-53201.herokuapp.com/)
