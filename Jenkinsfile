@@ -27,7 +27,7 @@ pipeline {
         stage('Build'){
             steps{
                 sh """
-                zip -q -r nodejs-app-${appVersion}.zip * -x Jenkinsfile -x nodejs-app-${appVersion}.zip
+                zip -q -r nodejs-app-${appVersion}.zip * -x Jenkinsfile -x Dockerfile -x nodejs-app-${appVersion}.zip
                 ls -ltr
                 """
             }
