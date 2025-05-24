@@ -97,8 +97,8 @@ pipeline {
         //      classifier: '',
         //      file: 'my-service-' + version + '.jar',
         //      type: 'jar']
-        ]
-     )
+    //     ]
+    //  )
         }
         // stage('Deploy'){
         //     steps{
