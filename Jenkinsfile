@@ -75,7 +75,7 @@ pipeline {
                         repository: "simple-nodejs-repo",
                         credentialsId: 'nexus-auth',
                         artifacts: [
-                            [artifactId: "nodejs-app-",
+                            [artifactId: "simple-nodejs-app",
                             classifier: '',
                             file: "nodejs-app-" + "${appVersion}" + '.zip',
                             type: 'zip']
