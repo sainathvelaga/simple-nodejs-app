@@ -36,6 +36,7 @@ pipeline {
         stage ('Archive artifacts'){
             steps{
                 archiveArtifacts artifacts: "nodejs-app-${appVersion}.zip", fingerprint: true
+                sh 'ls -la'
             }
         }
 
