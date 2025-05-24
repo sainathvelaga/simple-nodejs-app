@@ -9,9 +9,9 @@ pipeline {
     }
     environment{
         def appVersion = '' //variable declaration
-        nexusUrl = 'nexus.daws78s.online:8081'
+        nexusUrl = 'http://35.171.188.53:8081'
         region = "us-east-1"
-        account_id = "315069654700"
+        account_id = "654654239129"
     }
     stages {
         stage('read the version'){
@@ -63,37 +63,37 @@ pipeline {
         // }
 
 
-        /* stage('Nexus Artifact Upload'){
+        stage('Nexus Artifact Upload'){
             steps{
                 script{
                     nexusArtifactUploader(
                         nexusVersion: 'nexus3',
                         protocol: 'http',
                         nexusUrl: "${nexusUrl}",
-                        groupId: 'com.expense',
+                        groupId: 'com.nodejs',
                         version: "${appVersion}",
-                        repository: "frontend",
+                        repository: "simple-nodejs-repo",
                         credentialsId: 'nexus-auth',
                         artifacts: [
-                            [artifactId: "frontend" ,
+                            [artifactId: "nodejs-app-${appVersion}",
                             classifier: '',
-                            file: "frontend-" + "${appVersion}" + '.zip',
+                            file: "nodejs-app-" + "${appVersion}" + '.zip',
                             type: 'zip']
                         ]
                     )
                 }
             }
         }
-        stage('Deploy'){
-            steps{
-                script{
-                    def params = [
-                        string(name: 'appVersion', value: "${appVersion}")
-                    ]
-                    build job: 'frontend-deploy', parameters: params, wait: false
-                }
-            }
-        } */
+        // stage('Deploy'){
+        //     steps{
+        //         script{
+        //             def params = [
+        //                 string(name: 'appVersion', value: "${appVersion}")
+        //             ]
+        //             build job: 'frontend-deploy', parameters: params, wait: false
+        //         }
+        //     }
+        // } */
     }
     post { 
         always { 
