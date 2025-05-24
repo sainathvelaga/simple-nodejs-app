@@ -5,7 +5,7 @@ pipeline {
     options {
         timeout(time: 30, unit: 'MINUTES')
         disableConcurrentBuilds()
-        // ansiColor('xterm')
+        ansiColor('xterm')
     }
     environment{
         def appVersion = '' //variable declaration
@@ -30,6 +30,12 @@ pipeline {
                 zip -q -r nodejs-app-${appVersion}.zip * -x Jenkinsfile -x Dockerfile -x nodejs-app-${appVersion}.zip
                 ls -ltr
                 """
+            }
+        }
+
+        stage ('Archive artifacts'){
+            steps{
+                archiveArtifacts artifacts: "nodejs-app-${appVersion}.zip", fingerprint: true
             }
         }
 
