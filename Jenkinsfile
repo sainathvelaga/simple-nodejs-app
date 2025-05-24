@@ -88,7 +88,7 @@ pipeline {
                         groupId: 'com.nodejs',
                         version: '1.1.0',
                         repository: 'simple-nodejs-repo',
-                        credentialsId: 'nexus-creds',
+                        credentialsId: 'nexus-auth',
                         artifacts: [
                             [
                                 artifactId: 'nodejs-app',
