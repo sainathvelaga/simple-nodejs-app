@@ -40,17 +40,7 @@ pipeline {
             }
         }
 
-        // stage('Docker build'){
-        //     steps{
-        //         sh """
-        //             aws ecr get-login-password --region ${region} | docker login --username AWS --password-stdin ${account_id}.dkr.ecr.${region}.amazonaws.com
 
-        //             docker build -t ${account_id}.dkr.ecr.${region}.amazonaws.com/expense-frontend:${appVersion} .
-
-        //             docker push ${account_id}.dkr.ecr.${region}.amazonaws.com/expense-frontend:${appVersion}
-        //         """
-        //     }
-        // }
 
         // stage('Deploy'){
         //     steps{
@@ -75,25 +65,38 @@ pipeline {
            }
        }
 
+       stage('SonarQube Analysis') {
+           steps {
+               script {
+                   // Run SonarQube analysis
+                   withCredentials([string(credentialsId: 'sonarqube-token', variable: 'SONAR_TOKEN')]) {
+                       sh """
+                           sonar-scanner \
+                           -Dsonar.projectKey=nodejs-app \
+                           -Dsonar.sources=. \
+                           -Dsonar.host.url=http://nexus.sainathdevops.space:9000 \
+                           -Dsonar.login=$SONAR_TOKEN
+                       """
+                   }
+               }
+           }
+       }
+
+        stage('Docker build'){
+            steps{
+                sh """
+                    aws ecr get-login-password --region ${region} | docker login --username AWS --password-stdin ${account_id}.dkr.ecr.${region}.amazonaws.com
+
+                    docker build -t ${account_id}.dkr.ecr.${region}.amazonaws.com/expense-frontend:${appVersion} .
+
+                    docker push ${account_id}.dkr.ecr.${region}.amazonaws.com/expense-frontend:${appVersion}
+                """
+            }
+        }
 
         stage('Nexus Artifact Upload'){
             steps{
                 script{
-                    // nexusArtifactUploader(
-                    //     nexusVersion: 'nexus3',
-                    //     protocol: 'http',
-                    //     nexusUrl: "35.171.188.53:8081",
-                    //     groupId: 'com.nodejs',
-                    //     version: "${appVersion}",
-                    //     repository: "simple-nodejs-repo",
-                    //     credentialsId: 'nexus-auth',
-                    //     artifacts: [
-                    //         [artifactId: "nodejs-app",
-                    //         classifier: '',
-                    //         file: "target/nodejs-app-${appVersion}.zip",
-                    //         type: 'zip']
-                    //     ]
-                    // )
                     nexusArtifactUploader(
                         nexusVersion: 'nexus3',
                         protocol: 'http',
@@ -114,21 +117,7 @@ pipeline {
                 }
             }
 
-        //     nexusArtifactUploader(
-        // nexusVersion: 'nexus3',
-        // protocol: 'http',
-        // nexusUrl: 'my.nexus.address',
-        // groupId: 'com.example',
-        // version: version,
-        // repository: 'RepositoryName',
-        // credentialsId: 'CredentialsId',
-        // artifacts: [
-        //     [artifactId: projectName,
-        //      classifier: '',
-        //      file: 'my-service-' + version + '.jar',
-        //      type: 'jar']
-    //     ]
-    //  )
+
         }
         // stage('Deploy'){
         //     steps{
