@@ -66,21 +66,38 @@ pipeline {
         stage('Nexus Artifact Upload'){
             steps{
                 script{
+                    // nexusArtifactUploader(
+                    //     nexusVersion: 'nexus3',
+                    //     protocol: 'http',
+                    //     nexusUrl: "35.171.188.53:8081",
+                    //     groupId: 'com.nodejs',
+                    //     version: "${appVersion}",
+                    //     repository: "simple-nodejs-repo",
+                    //     credentialsId: 'nexus-auth',
+                    //     artifacts: [
+                    //         [artifactId: "nodejs-app",
+                    //         classifier: '',
+                    //         file: "target/nodejs-app-${appVersion}.zip",
+                    //         type: 'zip']
+                    //     ]
+                    // )
                     nexusArtifactUploader(
                         nexusVersion: 'nexus3',
                         protocol: 'http',
-                        nexusUrl: "35.171.188.53:8081",
+                        nexusUrl: '35.171.188.53:8081',
                         groupId: 'com.nodejs',
-                        version: "${appVersion}",
-                        repository: "simple-nodejs-repo",
-                        credentialsId: 'nexus-auth',
+                        version: '1.1.0',
+                        repository: 'simple-nodejs-repo',
+                        credentialsId: 'nexus-creds',
                         artifacts: [
-                            [artifactId: "nodejs-app",
-                            classifier: '',
-                            file: "target/nodejs-app-${appVersion}.zip",
-                            type: 'zip']
+                            [
+                                artifactId: 'nodejs-app',
+                                classifier: '',
+                                file: 'target/nodejs-app-1.1.0.zip',
+                                type: 'zip'
+                            ]
                         ]
-                    )
+            )
                 }
             }
 
