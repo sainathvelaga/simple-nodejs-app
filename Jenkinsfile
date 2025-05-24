@@ -77,7 +77,7 @@ pipeline {
                         artifacts: [
                             [artifactId: "nodejs-app",
                             classifier: '',
-                            file: "target/nodejs-${appVersion}.zip",
+                            file: "target/nodejs-app-${appVersion}.zip",
                             type: 'zip']
                         ]
                     )
