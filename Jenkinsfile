@@ -69,7 +69,7 @@ pipeline {
                     nexusArtifactUploader(
                         nexusVersion: 'nexus3',
                         protocol: 'http',
-                        nexusUrl: "${nexusUrl}",
+                        nexusUrl: "35.171.188.53:8081",
                         groupId: 'com.nodejs',
                         version: "${appVersion}",
                         repository: "simple-nodejs-repo",
@@ -83,6 +83,22 @@ pipeline {
                     )
                 }
             }
+
+        //     nexusArtifactUploader(
+        // nexusVersion: 'nexus3',
+        // protocol: 'http',
+        // nexusUrl: 'my.nexus.address',
+        // groupId: 'com.example',
+        // version: version,
+        // repository: 'RepositoryName',
+        // credentialsId: 'CredentialsId',
+        // artifacts: [
+        //     [artifactId: projectName,
+        //      classifier: '',
+        //      file: 'my-service-' + version + '.jar',
+        //      type: 'jar']
+        ]
+     )
         }
         // stage('Deploy'){
         //     steps{
