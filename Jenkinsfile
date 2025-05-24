@@ -85,9 +85,9 @@ pipeline {
                     nexusArtifactUploader(
                         nexusVersion: 'nexus3',
                         protocol: 'http',
-                        nexusUrl: '{nexusUrl}',
+                        nexusUrl: "${nexusUrl}",
                         groupId: 'com.nodejs',
-                        version: '1.1.0',
+                        version: "${appVersion}",
                         repository: 'simple-nodejs-repo',
                         credentialsId: 'nexus-auth',
                         artifacts: [
