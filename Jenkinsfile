@@ -71,9 +71,9 @@ pipeline {
                    // Run SonarQube analysis
                    withCredentials([string(credentialsId: 'sonarqube-token', variable: 'SONAR_TOKEN')]) {
                        sh """
-                           wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006-linux.zip
-                           unzip sonar-scanner-cli-5.0.1.3006-linux.zip
-                           export PATH=$PWD/sonar-scanner-*/bin:$PATH
+                        //    wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006-linux.zip
+                        //    unzip sonar-scanner-cli-5.0.1.3006-linux.zip
+                        //    export PATH=$PWD/sonar-scanner-*/bin:$PATH
                            sonar-scanner \
                            -Dsonar.projectKey=nodejs-app \
                            -Dsonar.sources=. \
