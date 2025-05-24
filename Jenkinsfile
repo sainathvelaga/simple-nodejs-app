@@ -85,7 +85,7 @@ pipeline {
                     nexusArtifactUploader(
                         nexusVersion: 'nexus3',
                         protocol: 'http',
-                        nexusUrl: '35.171.188.53:8081',
+                        nexusUrl: '{nexusUrl}',
                         groupId: 'com.nodejs',
                         version: '1.1.0',
                         repository: 'simple-nodejs-repo',
@@ -94,7 +94,7 @@ pipeline {
                             [
                                 artifactId: 'nodejs-app',
                                 classifier: '',
-                                file: 'nodejs-app-1.1.0.zip',
+                                file: "nodejs-app-" + "${appVersion}" + '.zip',
                                 type: 'zip'
                             ]
                         ]
