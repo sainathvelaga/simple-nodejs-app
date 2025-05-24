@@ -62,6 +62,16 @@ pipeline {
         //         """
         //     }
         // }
+        stage('Snyk Test') {
+           steps {
+               script {
+                   // Run Snyk test
+                   withCredentials([string(credentialsId: 'snyk-token', variable: 'SNYK_TOKEN')]) {
+                       sh 'snyk test --token=$SNYK_TOKEN'
+                   }
+               }
+           }
+       }
 
 
         stage('Nexus Artifact Upload'){
