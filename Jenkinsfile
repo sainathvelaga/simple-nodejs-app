@@ -67,7 +67,9 @@ pipeline {
                script {
                    // Run Snyk test
                    withCredentials([string(credentialsId: 'snyk-token', variable: 'SNYK_TOKEN')]) {
-                       sh 'snyk test --token=$SNYK_TOKEN'
+                       sh 'snyk test --token=$SNYK_TOKEN --severity-threshold=low --all-projects'
+                       // If you want to fail the build on vulnerabilities, uncomment the next line
+                       
                    }
                }
            }
