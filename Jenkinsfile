@@ -70,7 +70,7 @@ pipeline {
               environment {
                 // Define the SonarQube token as an environment variable
                 scannerHome = tool 'sonar-6.0'
-              }}
+              }
            steps {
                script {
                    // Run SonarQube analysis
