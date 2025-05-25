@@ -12,6 +12,7 @@ pipeline {
         nexusUrl = 'nexus.sainathdevops.space:8081'
         region = "us-east-1"
         account_id = "637423636571"
+        scannerHome = tool 'sonar-6.0'
     }
     stages {
         stage('read the version'){
@@ -67,14 +68,14 @@ pipeline {
 
        stage('SonarQube Analysis') {
         
-              environment {
-                // Define the SonarQube token as an environment variable
-                scannerHome = tool 'sonar-6.0'
-              }
+            //   environment {
+            //     // Define the SonarQube token as an environment variable
+            //     scannerHome = tool 'sonar-6.0'
+            //   }
            steps {
                script {
                    // Run SonarQube analysis
-                   withSonarQubeEnv('sonar-6.0') 
+                //    withSonarQubeEnv('sonar-6.0') {
                    withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR_TOKEN')]){
                        sh """
 
