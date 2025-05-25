@@ -1,9 +1,8 @@
 {
   "name": "simple-nodejs-app",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Research about a person",
-  "main": "index.js",
-  "scripts": {
+  "main": "index.js",  "scripts": {
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
