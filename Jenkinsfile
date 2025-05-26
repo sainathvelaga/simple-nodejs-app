@@ -11,7 +11,7 @@ pipeline {
         def appVersion = '' //variable declaration
         nexusUrl = 'nexus.sainathdevops.space:8081'
         region = "us-east-1"
-        account_id = "637423636571"
+        account_id = "992382546373"
         scannerHome = tool 'sonar-6.0'
     }
     stages {
@@ -43,16 +43,7 @@ pipeline {
 
 
 
-        // stage('Deploy'){
-        //     steps{
-        //         sh """
-        //             aws eks update-kubeconfig --region us-east-1 --name expense-dev
-        //             cd helm
-        //             sed -i 's/IMAGE_VERSION/${appVersion}/g' values.yaml
-        //             helm upgrade frontend .
-        //         """
-        //     }
-        // }
+
         stage('Snyk Test') {
            steps {
                script {
@@ -130,15 +121,10 @@ pipeline {
 
 
         // stage('Deploy'){
-        //     steps{
-        //         script{
-        //             def params = [
-        //                 string(name: 'appVersion', value: "${appVersion}")
-        //             ]
-        //             build job: 'frontend-deploy', parameters: params, wait: false
-        //         }
+        //     steps {
+
         //     }
-        // } */
+        // } 
     }
     post { 
         always { 
