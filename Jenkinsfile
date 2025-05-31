@@ -11,7 +11,7 @@ pipeline {
         def appVersion = '' //variable declaration
         nexusUrl = 'nexus.sainathdevops.space:8081'
         region = "us-east-1"
-        account_id = "992382546373"
+        account_id = "211125666607"
         scannerHome = tool 'sonar-6.0'
     }
     stages {
@@ -73,7 +73,7 @@ pipeline {
                            ${scannerHome}/bin/sonar-scanner \
                            -Dsonar.projectKey=nodejs-app \
                            -Dsonar.sources=. \
-                           -Dsonar.host.url=http://nexus.sainathdevops.space:9000 \
+                           -Dsonar.host.url=http://sonar.sainathdevops.space:9000 \
                            -Dsonar.login=$SONAR_TOKEN
                        """
                    }
@@ -119,13 +119,18 @@ pipeline {
             }
         }
 
-
-        // stage('Deploy'){
-        //     steps {
-
-        //     }
-        // } 
+        stage('Deploy'){
+            steps{
+                script{
+                    def params = [
+                        string(name: 'appVersion', value: "${appVersion}")
+                    ]
+                    build job: 'simple-nodejs-deploy', parameters: params, wait: false
+                }
+            }
+        } 
     }
+    
     post { 
         always { 
             echo 'I will always say Hello again!'
